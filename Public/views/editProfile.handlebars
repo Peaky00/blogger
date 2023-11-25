@@ -1,0 +1,11 @@
+<!-- editProfile.handlebars -->
+<h1>Edit Profile</h1>
+<form action="/profile/edit" method="POST">
+  <label for="bio">Bio:</label>
+  <textarea id="bio" name="bio" rows="4" cols="50">{{user.bio}}</textarea>
+
+  <label for="profilePicture">Profile Picture URL:</label>
+  <input type="text" id="profilePicture" name="profilePicture" value="{{user.profilePicture}}">
+
+  <button type="submit">Save Changes</button>
+</form>

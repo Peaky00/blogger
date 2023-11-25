@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Profile</title>
+  <!-- Add your CSS stylesheets and meta tags here -->
+</head>
+<body>
+  <header>
+    <h1>User Profile</h1>
+  </header>
+  <nav>
+    <!-- Add your site navigation here (e.g., links to other pages) -->
+  </nav>
+  <main>
+    <section>
+      <h2>Welcome, {{user.username}}!</h2>
+      <div class="profile-info">
+        <p>Username: {{user.username}}</p>
+        <p>Bio: {{user.bio}}</p>
+        <div class="profile-picture">
+          <img src="{{user.profilePicture}}" alt="Profile Picture">
+        </div>
+      </div>
+      <a href="/profile/edit">Edit Profile</a>
+    </section>
+  </main>
+  <footer>
+    <!-- Add your footer content here -->
+  </footer>
+</body>
+</html>
