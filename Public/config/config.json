@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "your_username",
+    "password": "your_password",
+    "database": "cms_blog",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
