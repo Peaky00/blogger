@@ -1,0 +1,28 @@
+{{#extend "layouts/main"}}
+{{#content "body"}}
+    <h1>Dashboard</h1>
+    {{#if user}}
+        <h2>Your Blog Posts</h2>
+        <ul>
+            {{#each user.blogPosts}}
+                <li>
+                    <a href="/post/{{id}}">{{title}}</a> ({{createdAt}})
+                    <span>
+                        <a href="/dashboard/edit/{{id}}">Edit</a> |
+                        <a href="/dashboard/delete/{{id}}" onclick="return confirm('Are you sure you want to delete this post?')">Delete</a>
+                    </span>
+                </li>
+            {{/each}}
+        </ul>
+        <h2>Create a New Blog Post</h2>
+        <form action="/blog/create-post" method="post">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" rows="6" required></textarea>
+            <button type="submit">Create Post</button>
+        </form>
+    {{else}}
+        <p>Please sign in to access your dashboard.</p>
+    {{/if}}
+{{/content}}

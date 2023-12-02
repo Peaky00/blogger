@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+</head>
+<body>
+  <header>
+    <!-- Navigation links for homepage and dashboard -->
+    <nav>
+      <a href="/">Homepage</a>
+      <a href="/dashboard">Dashboard</a>
+    </nav>
+
+    <!-- Log in option -->
+    <div>
+      <!-- Check if the user is authenticated, and display login or logout accordingly -->
+      {{#if isAuthenticated}}
+        <a href="/logout">Log out</a>
+      {{else}}
+        <a href="/login">Log in</a>
+      {{/if}}
+    </div>
+  </header>
+
+  <main>
+    <!-- Display existing blog posts here -->
+    {{#each blogPosts}}
+      <div class="blog-post">
+        <h2>{{title}}</h2>
+        <p>{{content}}</p>
+        <p>Posted by: {{author}}</p>
+        <p>Date: {{createdAt}}</p>
+      </div>
+    {{/each}}
+  </main>
+</body>
+</html>
