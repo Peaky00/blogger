@@ -1,29 +1,13 @@
-{{#extend "layouts/main"}}
-{{#content "body"}}
-    <h1>{{post.title}}</h1>
-    <p>Posted by {{post.User.username}} on {{post.createdAt}}</p>
-    <article>
-        {{post.content}}
-    </article>
-    {{#if user}}
-        <h2>Add a Comment</h2>
-        <form action="/blog/add-comment" method="post">
-            <input type="hidden" name="postId" value="{{post.id}}">
-            <textarea name="text" rows="4" required></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    {{else}}
-        <p>Sign in to leave a comment.</p>
-    {{/if}}
-    {{#if post.Comments.length}}
-        <h2>Comments</h2>
-        <ul>
-            {{#each post.Comments}}
-                <li>
-                    <p>{{this.text}}</p>
-                    <p>Comment by {{this.User.username}} on {{this.createdAt}}</p>
-                </li>
-            {{/each}}
-        </ul>
-    {{/if}}
-{{/content}}
+{{#if logged_in}}
+<section id="blog-post">
+  <div class="post-details">
+    <h3>{{post.title}}</h3>
+    <p>Published on: {{post.date}}</p>
+    <img src="{{post.thumbnail}}" alt="Blog Post Thumbnail">
+    <p>{{post.summary}}</p>
+    <a href="/read/{{post.id}}" class="btn">Read More</a>
+  </div>
+</section>
+{{/if}}
+
+<script src="/js/deletePost.js"></script>

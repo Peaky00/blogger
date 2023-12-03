@@ -1,69 +1,44 @@
-{{!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMS Blog</title>
-    <!-- Add your CSS and JavaScript links here -->
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                {{#if user}}
-                    <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="/auth/logout">Logout</a></li>
-                {{else}}
-                    <li><a href="/auth/login">Login</a></li>
-                    <li><a href="/auth/signup">Signup</a></li>
-                {{/if}}
-            </ul>
-        </nav>
-    </header>
-    <main>
-        {{{body}}}
-    </main>
-</body>
-</html> --}}
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Homepage</title>
+  <title>Random Blog</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lilita+One&family=Merriweather:ital@0;1&family=Space+Mono&family=Work+Sans:wght@400;500;800&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
   <header>
-    <!-- Navigation links for homepage and dashboard -->
+    <h1>Welcome to Random Blog</h1>
     <nav>
-      <a href="/">Homepage</a>
-      <a href="/dashboard">Dashboard</a>
-    </nav>
-
-    <!-- Log in option -->
-    <div>
-      <!-- Check if the user is authenticated, and display login or logout accordingly -->
-      {{#if isAuthenticated}}
-        <a href="/logout">Log out</a>
-      {{else}}
-        <a href="/login">Log in</a>
+      {{#if logged_in}}
+      <a href="/dashboard">Home</a>
+      <a class="no-button" id="logout">Logout</a>
       {{/if}}
-    </div>
+    </nav>
   </header>
 
   <main>
-    <!-- Display existing blog posts here -->
-    {{#each blogPosts}}
-      <div class="blog-post">
-        <h2>{{title}}</h2>
-        <p>{{content}}</p>
-        <p>Posted by: {{author}}</p>
-        <p>Date: {{createdAt}}</p>
-      </div>
-    {{/each}}
+    {{{body}}}
   </main>
+  <div>
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
+  </div>
+  <footer>
+    <ul class="contact">
+      <li>123-456-7890</li>
+      <li><a href="mailto:admin@randomblog.com">admin@randomblog.com</a></li>
+      <li>5678 Blog St, City, State 12345</li>
+    </ul>
+  </footer>
 </body>
+
 </html>
