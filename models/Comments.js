@@ -23,8 +23,8 @@ Comments.init(
         blogPost_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'blogpost',
-                key: 'id',
+                model: 'blogposts', // Correct table name
+                key: 'id', // Correct primary key column name
             },
         },
         user_id: {

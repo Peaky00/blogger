@@ -1,7 +1,16 @@
 const router = require('express').Router();
-const { User, BlogPost, Comments } = require('../models');
+const { User, BlogPost,} = require('../models');
 const withAuth = require('../utils/auth');
+const { Comments } = require('../models/Comments')
 
+
+router.get('/', async (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/homepage');
+    return;
+  }
+  res.render('login');
+});
 // GET all blogposts
 router.get('/', async (req, res) => {
     try {
@@ -13,7 +22,8 @@ router.get('/', async (req, res) => {
             },
         ],
         });
-        res.status(200).json(blogpostData);
+        const posts = blogpostData.map((post) => post.get({plain: true}));
+        res.render('blogpost', {posts})
     } catch (err) {
         res.status(500).json(err);
     }
